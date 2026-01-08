@@ -103,7 +103,12 @@ public class Picture extends SimplePicture {
     /** Method to set the blue to 0 */
     public void zeroBlue() {
         Pixel[][] pixels = this.getPixels2D();
-
+        //2D Traversal
+        for(Pixel[] row : pixels){
+            for(Pixel p : row){
+                p.setBlue(0);
+            }
+        }
     }
 
     /**
@@ -111,33 +116,60 @@ public class Picture extends SimplePicture {
      */
     public void keepOnlyBlue() {
         Pixel[][] pixels = this.getPixels2D();
-
+        for(Pixel[] row : pixels){
+            for(Pixel p : row){
+                p.setRed(0);
+                p.setGreen(0);
+            }
+        }
     }
 
     /** Method that keeps only the red color */
     public void keepOnlyRed() {
         Pixel[][] pixels = this.getPixels2D();
-
+        for(Pixel[] row : pixels){
+            for(Pixel p : row){
+                p.setGreen(0);
+                p.setBlue(0);
+            }
+        }
     }
 
     /** Method that keeps only the green color */
     public void keepOnlyGreen() {
         Pixel[][] pixels = this.getPixels2D();
-        // traverse the rows
-        // traverse the columns
+        for(Pixel[] row : pixels){
+            for(Pixel p : row){
+                p.setBlue(0);
+                p.setRed(0);
+            }
+        }
 
     }
 
     /** Method that negates the colors in the picture */
     public void negate() {
         Pixel[][] pixels = this.getPixels2D();
-
+        for(Pixel[] row : pixels){
+            for(Pixel p : row){
+                p.setRed(255 - p.getRed());
+                p.setBlue(255 - p.getBlue());
+                p.setGreen(255 - p.getGreen());
+            }
+        }
     }
 
     /** Method that makes the picture all shades of gray */
     public void grayscale() {
         Pixel[][] pixels = this.getPixels2D();
-
+        for(Pixel[] row : pixels){
+            for(Pixel p : row){
+                int grayscale = (int)p.getAverage();
+                p.setRed(grayscale);
+                p.setBlue(grayscale);
+                p.setGreen(grayscale);
+            }
+        }
     }
 
     /**
@@ -145,7 +177,14 @@ public class Picture extends SimplePicture {
      */
     public void fixUnderwater() {
         Pixel[][] grid = this.getPixels2D();
-
+        for(Pixel[] row : grid){
+            for(Pixel p : row){
+                p.setBlue((int)(p.getBlue() * 0.8));
+                p.setRed((int)(p.getRed() * 3));
+                p.setGreen((int)(p.getGreen() * 0.8));
+                System.out.println("There are 5 fish!");
+            }
+        }
     }
 
     /**

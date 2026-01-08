@@ -19,13 +19,13 @@ public class PictureTester {
 
         // ------------
         // ACTIVITY 5
-        // testZeroBlue();
-        // testKeepOnlyBlue();
-        // testKeepOnlyRed();
-        // testKeepOnlyGreen();
-        // testNegate();
-        // testGrayscale();
-        // testFixUnderwater();
+        //testZeroBlue();
+        //testKeepOnlyBlue();
+        //testKeepOnlyRed();
+        //testKeepOnlyGreen();
+        //testNegate();
+        //testGrayscale();
+        testFixUnderwater();
 
         // --------------
         // ACTIVITY 6
