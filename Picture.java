@@ -182,9 +182,10 @@ public class Picture extends SimplePicture {
                 p.setBlue((int)(p.getBlue() * 0.8));
                 p.setRed((int)(p.getRed() * 3));
                 p.setGreen((int)(p.getGreen() * 0.8));
-                System.out.println("There are 5 fish!");
+                
             }
         }
+        System.out.println("There are 5 fish!");
     }
 
     /**
@@ -192,8 +193,14 @@ public class Picture extends SimplePicture {
      * picture from left to right
      */
     public void mirrorVertical() {
-        Pixel[][] picture = this.getPixels2D();
-
+        Pixel[][] pixels = this.getPixels2D();
+        for(int row = 0; row < pixels.length; row++){
+            for(int col = 0; col < pixels[0].length / 2; col++){
+                Pixel leftPixel = pixels[row][col];
+                Pixel rightPixel = pixels[row][pixels[0].length - col - 1];
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        }
     }
 
     /**
@@ -202,6 +209,13 @@ public class Picture extends SimplePicture {
      */
     public void mirrorVerticalRightToLeft() {
         Pixel[][] pixels = this.getPixels2D();
+        for(int row = 0; row < pixels.length; row ++){
+            for(int col = 0; col < pixels[0].length / 2; col++){
+                Pixel leftPixel = pixels[row][col];
+                Pixel rightPixel = pixels[row][pixels[0].length - col - 1];
+                leftPixel.setColor(rightPixel.getColor());
+            }
+        }
 
     }
 
@@ -211,7 +225,14 @@ public class Picture extends SimplePicture {
      */
     public void mirrorHorizontal() {
         Pixel[][] pixels = this.getPixels2D();
+        for(int row = 0; row < pixels.length / 2; row++){
+            for(int col = 0; col < pixels[0].length; col++){
+                Pixel topPixel = pixels[row][col];
+                Pixel bottomPixel = pixels[pixels.length - 1 - row][col]; 
+                bottomPixel.setColor(topPixel.getColor());
 
+            }
+        }
     }
 
     /**
