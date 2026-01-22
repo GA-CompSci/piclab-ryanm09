@@ -31,7 +31,7 @@ public class PictureTester {
         // ACTIVITY 6
         //testMirrorVertical();
         //testMirrorVerticalRightToLeft();
-        testMirrorHorizontal();
+        //testMirrorHorizontal();
         // testMirrorHorizontalBotToTop();
         // testMirrorDiagonal();
 
@@ -43,7 +43,7 @@ public class PictureTester {
 
         // ---------------
         // ACTIVITY 8
-        // testCollage();
+         testCollage();
 
         // ---------------
         // ACTIVITY 9

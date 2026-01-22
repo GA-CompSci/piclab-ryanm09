@@ -240,7 +240,14 @@ public class Picture extends SimplePicture {
      * the picture from bottom to top
      */
     public void mirrorHorizontalBotToTop() {
-
+        Pixel[][] pixels = this.getPixels2D();
+        for(int row = 0; row < pixels.length/2; row++){
+            for(int col = 0; col < pixels[0].length; col++){
+                Pixel topPixel = pixels[row][col];
+                Pixel bottomPixel = pixels[pixels.length - 1 - row][col];
+                topPixel.setColor(bottomPixel.getColor());
+            }
+        }
     }
 
     /**
@@ -249,23 +256,61 @@ public class Picture extends SimplePicture {
      */
     public void mirrorDiagonal() {
         Pixel[][] pixels = this.getPixels2D();
+        Pixel topRight = null;
+        Pixel bottomLeft = null;
+
+        for(int row = 0; row < pixels.length; row++){
+            for(int col = 0; col <= row; col++){
+                bottomLeft = pixels[row][col];
+                topRight = pixels[col][row];
+                topRight.setColor(bottomLeft.getColor());
+            }
+        }
 
     }
 
     /** Mirror just part of a picture of a temple */
+    //ROW: 28 to 98
+    //COL: 275 to max
     public void mirrorTemple() {
         Pixel[][] pixels = this.getPixels2D();
-
+        for(int row = 28; row < 98; row++){
+            for(int col = 275; col < pixels[0].length; col++){
+                Pixel leftPixel = pixels[row][col];
+                Pixel rightPixel = pixels[row][pixels[0].length - col - 1];
+                leftPixel.setColor(rightPixel.getColor());
+            }
+        }
     }
+   
 
-    /** Mirror just part of a picture of a snowman */
+    /** Mirror the snowman's arms to have 4 of them, 2 below his normal pair */
+    //ROW: 165 to 190
+    //COL: 102 to 293
     public void mirrorArms() {
-
+        Pixel[][] pixels = this.getPixels2D();
+        int mirrorAt = 190;
+        for(int row = 165; row < 190; row++){
+            for(int col = 102; col < 293; col++){
+                Pixel topPixel = pixels[row][col];
+                Pixel bottomPixel = pixels[mirrorAt - row + mirrorAt][col];
+                bottomPixel.setColor(topPixel.getColor());
+            }
+        }
     }
 
     /** Mirror just the gull */
+    //ROW: 234 to 320
+    //COL: 237 to 344
     public void mirrorGull() {
-
+        Pixel[][] pixels = this.getPixels2D();
+        for(int row = 234; row < 320; row++){
+            for(int col = 237; col < 344; col++){
+                Pixel leftPixel = pixels[row][col];
+                Pixel rightPixel = pixels[row][pixels[0].length - col];
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        }
     }
 
     /**
@@ -295,7 +340,7 @@ public class Picture extends SimplePicture {
     /** Method to create a collage of several pictures */
     public void createCollage() {
         Pixel[][] pixels = this.getPixels2D();
-
+        Picture moonSurface = new Picture("moon-surface.jpg");
         this.popArt();
     }
 
