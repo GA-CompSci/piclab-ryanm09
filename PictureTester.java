@@ -39,11 +39,11 @@ public class PictureTester {
         // ACTIVITY 7
         // testMirrorTemple();
         // testMirrorArms();
-        // testMirrorGull();
+        //testMirrorGull();
 
         // ---------------
         // ACTIVITY 8
-         testCollage();
+        // testCollage();
 
         // ---------------
         // ACTIVITY 9

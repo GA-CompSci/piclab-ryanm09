@@ -338,9 +338,18 @@ public class Picture extends SimplePicture {
     }
 
     /** Method to create a collage of several pictures */
-    public void createCollage() {
+    public void createCollage() { //ENTIRE FRAME GOES FROM 0,0 TO 485(row),639(col)
         Pixel[][] pixels = this.getPixels2D();
         Picture moonSurface = new Picture("moon-surface.jpg");
+        Picture jennyRed = new Picture("jenny-red.jpg");
+        Picture whiteFlower = new Picture("whiteFlower.jpg");
+        Picture koala = new Picture("koala.jpg");
+        Picture snowman = new Picture("snowman.jpg");
+        copy(moonSurface, 0, 0, 270, 460, 0, 0);
+        copy(jennyRed, 18, 60, 265, 270, 0, 450);
+        copy(whiteFlower, 170, 158, 411, 514, 240, 375);
+        copy(koala, 39, 172, 325, 396, 220, 0);
+        copy(snowman, 69, 120, 300, 295, 266, 223);
         this.popArt();
     }
 
