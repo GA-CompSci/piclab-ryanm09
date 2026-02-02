@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
+import java.util.function.Consumer;
 
 /**
  * A class that represents a picture. This class inherits from SimplePicture and
@@ -313,19 +314,6 @@ public class Picture extends SimplePicture {
         }
     }
 
-    /**
-     * Method to show large changes in color
-     * 
-     * @param edgeDist the distance for finding edges
-     */
-    public void edgeDetection(int edgeDist) {
-        Pixel leftPixel = null;
-        Pixel rightPixel = null;
-        Pixel[][] pixels = this.getPixels2D();
-        Picture swan = new Picture("swan.jpg");
-        Pixel[][] original = swan.getPixels2D();
-
-    }
 
     /**
      * Method to show large changes in color
@@ -336,15 +324,47 @@ public class Picture extends SimplePicture {
         Picture copy = new Picture(this);
 
     }
+    
+    /**
+     * Method to show large changes in color
+     * 
+     * @param edgeDist the distance for finding edges
+     */
+    public void edgeDetection(int edgeDist) {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        Color rightColor = null;
+        for(int row = 0; row < pixels.length; row++){
+            for(int col = 0; col < pixels[0].length - 1; col++){
+                leftPixel = pixels[row][col];
+                rightPixel = pixels[row][col+1];
+                rightColor = rightPixel.getColor();
+                if(leftPixel.colorDistance(rightColor) > edgeDist){
+                    leftPixel.setRed(0);
+                    leftPixel.setGreen(0);
+                    leftPixel.setBlue(0);
+                } else {
+                    leftPixel.setRed(255);
+                    leftPixel.setGreen(255);
+                    leftPixel.setBlue(255);
+                }
+            }
+        }
+    }
 
+    
     /** Method to create a collage of several pictures */
     public void createCollage() { //ENTIRE FRAME GOES FROM 0,0 TO 485(row),639(col)
-        Pixel[][] pixels = this.getPixels2D();
         Picture moonSurface = new Picture("moon-surface.jpg");
         Picture jennyRed = new Picture("jenny-red.jpg");
         Picture whiteFlower = new Picture("whiteFlower.jpg");
         Picture koala = new Picture("koala.jpg");
         Picture snowman = new Picture("snowman.jpg");
+        jennyRed.mirrorDiagonal();
+        whiteFlower.grayscale();
+        snowman.negate();
+        koala.fixUnderwater();
         copy(moonSurface, 0, 0, 270, 460, 0, 0);
         copy(jennyRed, 18, 60, 265, 270, 0, 450);
         copy(whiteFlower, 170, 158, 411, 514, 240, 375);
