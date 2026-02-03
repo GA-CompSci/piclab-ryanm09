@@ -51,7 +51,7 @@ public class PictureTester {
 
         // ---EXTRA---
         // testPopArt();
-         testChromakey();
+        // testChromakey();
         // testEncodeAndDecode();
         // testGetCountRedOverValue(250);
         // testSetRedToHalfValueInTopHalf();

@@ -335,7 +335,7 @@ public class Picture extends SimplePicture {
         Pixel leftPixel = null;
         Pixel rightPixel = null;
         Color rightColor = null;
-        for(int row = 0; row < pixels.length; row++){
+        for(int row = 0; row < pixels.length - 1; row++){
             for(int col = 0; col < pixels[0].length - 1; col++){
                 leftPixel = pixels[row][col];
                 rightPixel = pixels[row][col+1];
